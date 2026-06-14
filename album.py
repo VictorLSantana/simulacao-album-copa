@@ -5,7 +5,7 @@ import random
 VALOR_PACOTE = 7 # valor do pacote de figurinhas em R$
 VALOR_ALBUM = 75 # valor do album de figurinhas em R$
 QNTD_PACOTE = 7  # quantidade de figurinhas por pacote
-QNTD_ALBUM = 10 # quantidade de figurinhas para completar o album
+QNTD_ALBUM = 980 # quantidade de figurinhas para completar o album
 
 # Classe Album
 class Album:
@@ -21,6 +21,8 @@ class Album:
         pacote = [random.randint(1, QNTD_ALBUM) for f in range(QNTD_PACOTE)]
         return pacote
 
+    # recebe um pacote e verifica se as figurinhas já estão presente no album, não estiver
+    # a figurinha é colada no album, caso contrário a figurinha é adicionada a lista de repetidas
     def colar_figurinha(self, pacote):
         for f in pacote:
             if self.figurinhas_do_album[f-1] == 0:
