@@ -3,7 +3,6 @@ import random
 
 # Definindo algumas constantes
 VALOR_PACOTE = 7 # valor do pacote de figurinhas em R$
-VALOR_ALBUM = 75 # valor do album de figurinhas em R$
 QNTD_PACOTE = 7  # quantidade de figurinhas por pacote
 QNTD_ALBUM = 980 # quantidade de figurinhas para completar o album
 
@@ -29,6 +28,19 @@ class Album:
                 self.figurinhas_do_album[f-1] = f
             else:
                 self.figurinhas_repetidas.append(f)
+                
+    def trocar_figurinha(self, album1, album2):
+        # conferindo se existe alguma figurinha que o album1 precisa que
+        # esteja nas figurinhas repetidas do album2
+        
+        for f in album2.figurinhas_repetidas:
+            if f in album1.figurinhas_do_album:
+                continue
+            else:
+                # se existir a figurinha, o album1 cola a figurinha e o album2 remove a figurinha da lista de repetidas
+                album1.colar_figurinha([f])
+                album2.figurinhas_repetidas.remove(f)
+                break
 
     
     
